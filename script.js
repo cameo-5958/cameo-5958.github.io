@@ -13,6 +13,7 @@ class C {
 
 const BOARD  = document.getElementById("board");
 const START  = document.getElementById("start");
+const SCORE  = document.getElementById("score");
 const COLORS = {
     red:   "RED",
     green: "GREEN",
@@ -23,7 +24,8 @@ const DIRECTIONS = {
     left:  new C(-1, 0), up:   new C(0, -1)
 };
 
-var length, direction, position, snake, fruits;
+
+var length, direction, position, snake, fruits, score;
 var lock = false;
 
 const tickspeed = 250;
@@ -144,6 +146,7 @@ function tick()
             length += 1
             fruits.splice(index, 1);
             createFruit();
+            score += 50;
         }
 
         index++;
@@ -161,6 +164,18 @@ function tick()
     }
 
     setTimeout(tick, tickspeed);
+}
+
+function scoreit()
+{
+    if (lock) {
+        score += 5;
+
+        // Update the score
+        SCORE.innerHTML = `Score: ${score}`;
+
+        setTimeout(scoreit, tickspeed / 5);
+    }
 }
 
 function go() 
@@ -182,6 +197,7 @@ function go()
     position = new C(1, 1);
     snake = [position];
     fruits = [];
+    score = 0;
 
     for (let i=0; i<5; i++) {
         createFruit();
@@ -191,6 +207,7 @@ function go()
 
     change_color(position, COLORS.green);
     setTimeout(tick, tickspeed);
+    setTimeout(scoreit, tickspeed / 5);
 }
 
 board_setup();
