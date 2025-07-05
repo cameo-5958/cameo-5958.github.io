@@ -146,7 +146,7 @@ function tick()
             length += 1
             fruits.splice(index, 1);
             createFruit();
-            score += 50;
+            score += 500;
         }
 
         index++;
@@ -172,7 +172,7 @@ function tick()
 function scoreit()
 {
     if (lock) {
-        score += 5;
+        score += 1;
 
         // Update the score
         SCORE.innerHTML = `Score: ${score}`;
