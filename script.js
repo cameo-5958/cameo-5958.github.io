@@ -163,6 +163,9 @@ function tick()
         remove_color(removed);
     }
 
+    // Update the score
+    SCORE.innerHTML = `Score: ${score}`;
+
     setTimeout(tick, tickspeed);
 }
 
