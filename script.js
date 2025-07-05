@@ -26,6 +26,9 @@ const DIRECTIONS = {
 var length, direction, position, snake, fruits;
 var lock = false;
 
+const tickspeed = 250;
+
+
 function board_setup() 
 {
     for (let y=0; y<16; y++) {
@@ -90,6 +93,32 @@ function die()
     update_status("DEAD");
 }
 
+function createFruit()
+{
+    let x = Math.floor(Math.random() * 16);
+    let y = Math.floor(Math.random() * 16);
+    
+    let position = new C(x, y);
+
+    let valid = true;
+    for (let pos in snake) {
+        if (snake[pos].pos == position.pos)
+            valid = false;
+    }
+
+    for (let pos in fruits) {
+        if (fruits[pos].pos == position.pos)
+            valid = false;
+    }
+
+    if (valid) {
+        fruits.push(position);
+        change_color(position, COLORS.red);
+    }
+    else return createFruit();
+}
+
+
 function tick() 
 {
     // Calculate new position
@@ -108,8 +137,18 @@ function tick()
     }
 
     // If you collide with a fruit, then we'll
-    // grow
-    
+    // grow and delete that fruit
+    let index = 0;
+    while (index < fruits.length) {
+        if (fruits[index].pos == position.pos) {
+            length += 1
+            fruits.splice(index, 1);
+            createFruit();
+        }
+
+        index++;
+    }
+
 
     // Draw the new position
     change_color(position, COLORS.green);
@@ -121,7 +160,7 @@ function tick()
         remove_color(removed);
     }
 
-    setTimeout(tick, 500);
+    setTimeout(tick, tickspeed);
 }
 
 function go() 
@@ -138,15 +177,20 @@ function go()
         }
     }  
 
-    length = 15;
+    length = 3;
     direction = DIRECTIONS.right;
     position = new C(1, 1);
     snake = [position];
+    fruits = [];
+
+    for (let i=0; i<5; i++) {
+        createFruit();
+    }
 
     update_status("Alive");
 
     change_color(position, COLORS.green);
-    setTimeout(tick, 500);
+    setTimeout(tick, tickspeed);
 }
 
 board_setup();
