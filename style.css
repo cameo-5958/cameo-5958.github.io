@@ -1,0 +1,116 @@
+html {
+    --bg-color-1: #CCFFCC;
+    --bg-color-2: #99CC99;
+
+    --screen-border: 5%;
+}
+
+body {
+    background-color: var(--bg-color-1);
+
+}
+
+.screen { 
+    width: 100%;
+    aspect-ratio: 4/3;
+
+    box-shadow: var(--bg-color-2) 5px 5px 5px;
+
+    border: black 1px solid;
+    background-color: white;
+
+    display: grid;
+    grid-template-columns: 75% 25%;
+}
+
+.board-border {
+    width: calc(100% - calc(var(--screen-border) * 2));
+    height: calc(100% - calc(var(--screen-border) * 2));
+    padding: var(--screen-border);
+
+    background-color: gray;
+}
+
+.board {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(16, calc(100% / 16));
+    grid-template-rows: repeat(16, calc(100% / 16));
+    font-size:100px;
+}
+
+.cell {
+    background-color: white;
+    border: black 1px solid;
+}
+
+.RED {
+    background-color: #ff0000 !important;
+}
+
+.GREEN {
+    background-color: #00ff00 !important;
+}
+
+.BLACK {
+    background-color: #000000 !important;
+}
+
+GANYUCOLOR {
+    color: #AAAAFF;
+}
+
+.controller-board {
+    width: 50%;
+    aspect-ratio: 1;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    
+    justify-self: center;
+}
+
+.c-cell, .button {
+    border: black 1px solid;
+    width: 100%;
+    aspect-ratio: 1;
+    text-align: center;
+}
+
+.status {
+    width: 90%;
+
+    margin: 5%;
+    
+    border: black 1px solid;
+    text-align: center;
+}
+
+.start {
+    width: 80%;
+    margin: 5% 5% 5% 5%;
+    border: black 1px solid;
+    text-align: center;
+    padding: 5%;
+}
+
+.active {
+    background-color: #99FF99;
+    box-shadow: #77DD77 3px 3px 3px;
+}
+
+.active:hover {
+    background-color: #AAFFAA;
+}
+
+.active:active {
+    background-color: #88EE88;
+
+}
+
+.inactive {
+    background-color: gray;
+}

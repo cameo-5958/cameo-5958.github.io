@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>snake!</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <icon src="aaaeaaaeaa.png"></icon>
+</head>
+<body>
+    <div class="screen">
+        <div class="board-border">
+            <div class="board" id="board">
+            </div>
+        </div>
+        <div class="display-two">
+            <img src="aaaeaaaeaa.png" style="width: 100%;">
+            <div class="status" id="status">Inactive</div>
+            <div class="start active" id="start" onclick="go();">Start Game!</div>
+            <div class="controller-board">
+                <div class="c-cell"></div>
+                <div class="button" id="up" onclick="dirswap('up');"> ↑ </div>
+                <div class="c-cell"></div>
+                <div class="button" id="left" onclick="dirswap('left');"> ← </div>
+                <div class="c-cell"></div>
+                <div class="button" id="right" onclick="dirswap('right');"> →</div>
+                <div class="c-cell"></div>
+                <div class="button" id="down" onclick="dirswap('down');"> ↓ </div>
+                <div class="c-cell"></div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
